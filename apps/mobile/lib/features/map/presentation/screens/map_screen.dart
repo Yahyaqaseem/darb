@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../../emergency/presentation/sos_sheet.dart';
+import '../../../emergency/presentation/sos_sheet.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
