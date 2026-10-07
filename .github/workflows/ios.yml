@@ -1,0 +1,32 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.x'
+        channel: 'stable'
+        architecture: x64
+        
+    - name: Get dependencies
+      working-directory: ./apps/mobile
+      run: flutter pub get
+      
+    - name: Pod Install
+      working-directory: ./apps/mobile/ios
+      run: pod install
+      
+    - name: Build iOS App (No Sign)
+      working-directory: ./apps/mobile
+      run: flutter build ios --release --no-codesign
