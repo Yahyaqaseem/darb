@@ -26,6 +26,10 @@ jobs:
     - name: Get dependencies
       working-directory: ./apps/mobile
       run: flutter pub get
+
+    - name: Fix iOS Minimum Deployment Target
+      working-directory: ./apps/mobile/ios
+      run: sed -i '' "s/^# platform :ios.*/platform :ios, '13.0'/g" Podfile
       
     - name: Build iOS App (No Sign)
       working-directory: ./apps/mobile
