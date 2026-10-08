@@ -39,7 +39,7 @@ jobs:
       working-directory: ./apps/mobile
       run: |
         mkdir -p Payload
-        mv build/ios/iphoneos/Runner.app Payload/
+        find build/ios -name "Runner.app" -type d -exec cp -R {} Payload/ \;
         zip -r -qq DARB_iOS.ipa Payload
 
     - name: Upload iOS IPA
